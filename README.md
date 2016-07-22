@@ -1,11 +1,11 @@
-# tools
+# Tools
 Public repo to share some of my scripts
 
-#Script: gitExportRepoTag.sh
+##Script: gitExportRepoTag.sh
 
 This script exports tags from both public and private repositories
 
-# Assumption:
+#### Assumption:
 
     1) User has credentials to connect to the private repo
 
@@ -13,7 +13,7 @@ This script exports tags from both public and private repositories
 
     3) User has added GTOKEN environment variable to their .cshrc or .bashrc file
 
-# Input:
+#### Input:
 
    1) Owner/Organization name
 
@@ -21,7 +21,7 @@ This script exports tags from both public and private repositories
 
    3) Tag
 
-# What it does:
+#### What it does:
 
     1) Set path to git tag
 
