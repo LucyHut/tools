@@ -13,9 +13,9 @@ This script exports tags from both public and private repositories
 
 #### Input:
 
-   1) Owner/Organization name
-   2) Repository name
-   3) Tag
+    1) Owner/Organization name
+    2) Repository name
+    3) Tag
 
 #### What it does:
 
