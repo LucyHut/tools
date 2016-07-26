@@ -7,9 +7,19 @@ from xml.dom import minidom
 ################################################
 ## This script displays current
 #  active public and robot servers information
+#  1) fe solr instance
+#  2) fe fewi server 
+#  3) fe database server
+#  4) serachtool instance
+#  5) SNP solr instance 
 #
+# The program also stores the above info in an xml file
+# (active-public.xml) under /mgi/centrallog/xmls/
+# 
 #Author: lnh
 #Date: 7/2016
+#
+# Usage: ./genActiveServers.py
 #
 ###############################################
 
@@ -20,7 +30,7 @@ flag_base=central_log_base+"/flags/weeklypubupdates"
 flag_file=flag_base+"/InactivePublic"
 xmls_base=central_log_base+"/xmls"
 public_xml=xmls_base+"/public.xml"
-xml_file=xmls_base+"/active-public.xml"
+active_pub_xml_file=xmls_base+"/active-public.xml"
 
 def main():
     print "****************************"
@@ -50,13 +60,22 @@ def main():
     pub_serv_list=xmldoc.getElementsByTagName("servers")
     for servers in pub_serv_list:
         if active_server in servers.getAttribute("id"):
+           activefh=open(active_pub_xml_file,'w')
+           activefh.write("<?xml version='1.0' encoding='utf-8'?>\n")
+           activefh.write("<public>\n    <title>Active Public and Robot Servers</title>")
+           activefh.write("\n    <date>%s</date>"%(today.strftime("%Y/%m/%d %I:%M:%S")))
            for server in servers.getElementsByTagName("server"):
                print "*************** "
                print server.getAttribute("name")
+               activefh.write("\n    <servers name='%s'>\n"%(server.getAttribute("name")))
                print "--------------- "
                for tag in server.getElementsByTagName("tag"):
                    print "%s: %s"%(tag.getAttribute("name"),tag.childNodes[0].data.strip()) 
+                   activefh.write("        <tag name='%s'> %s</tag>\n"%(tag.getAttribute("name"),tag.childNodes[0].data.strip())) 
                print " "
+               activefh.write("    </servers>\n")
+           activefh.write("</public>")
+           activefh.close()
     print "****************************"
 
 if __name__ == "__main__":
