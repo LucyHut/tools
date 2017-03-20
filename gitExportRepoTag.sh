@@ -36,7 +36,7 @@ then
   echo ""
   echo "Usage: ./$SCRIPT_NAME ORGANIZATION/OWNER REPO_NAME GIT_TAG"
   echo "Example1: ./$SCRIPT_NAME mgijax pgdbutilities  6-0-4-3"
-  echo "Example1: ./$SCRIPT_NAME mgijax ei  6-0-4-7"
+  echo "Example1: ./$SCRIPT_NAME mgijax ei  master"
   echo ""
   echo "Assumption:
         1) User has credentials to connect to the private repo
