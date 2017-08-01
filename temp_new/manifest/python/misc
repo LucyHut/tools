@@ -1,0 +1,24 @@
+#!/bin/sh
+
+JBOSS_PIDS=`ps -ef | grep 'Djboss' | grep -v grep | sed 's/ [ ]*/ /g' | cut -d' ' -f2`
+JAVA_PIDS=`ps -ef | grep 'Standalone' | grep -v grep | sed 's/ [ ]*/ /g' | cut -d' ' -f2`
+echo "JBoss processes:"
+echo ${JBOSS_PIDS}
+echo "Java processs:"
+echo ${JAVA_PIDS}
+echo ""
+
+for i in `ps -ef | grep 'Standalone' | grep -v grep | sed 's/ [ ]*/ /g' | cut -d' ' -f2,3 | sed 's/ /:/'`
+do
+    PID=`echo $i | cut -d':' -f1`
+    PPID=`echo $i | cut -d':' -f2`
+
+    if [ ${PPID} = "1" ]
+    then
+        echo "Java process ${PID} has no JBoss parent process -- kill it"
+    else
+        QS=`pargs -l ${PID} | sed "s/.*searchtool/searchtool/" | sed "s/' //"`
+        echo "${QS}: JBoss process=${PPID} Java process=${PID}"
+    fi
+done
+~       

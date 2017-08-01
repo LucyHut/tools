@@ -1,0 +1,25 @@
+/************************
+manifest style
+************************/
+html{
+   overflow: scroll;
+ }
+img {border:0px;}
+body {
+   margin: 0px auto;padding: 0px;
+  font:12px/1.231 arial,helvetica,clean,sans-serif;
+  color:rgb(37,64,97);
+}
+form,div,td,ul,ol,h1,h2,h3,p,table,article{padding:0;margin:0;}
+
+.section{width:60em; margin:auto;background:#fff;}
+/*Header sextion*/
+#header{border-bottom:solid 1px rgb(37,64,97);padding-bottom:1em;}
+#header h1{font-family:cursive, fantasy;}
+
+/**** Form section *****/
+#form-block input[type="text"]{margin:0;padding:0;}
+[id="result"] {background:#eee;width:99%;margin:auto;}
+[id="result"] td{background:#fff;}
+
+

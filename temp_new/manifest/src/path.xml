@@ -1,0 +1,9 @@
+<?xml version="" ?>
+<tags>
+<tag name="Pyhton 2.7"><![CDATA[/opt/python/lib/python2.7]]></tag>
+<tag name="Python 2.4"><![CDATA[/usr/local/lib/python2.4]]></tag>
+<tag name="Java 1.5"><![CDATA[/usr/lib/java-1.5.0/]]></tag>
+<tag name="Java 1.6"><![CDATA[/usr/lib/java-1.6.0/]]></tag>
+<tag name="Java 1.7"><![CDATA[/usr/lib/java-1.7.0/]]></tag>
+<tag name="Java 1.8"><![CDATA[/usr/lib/java-1.8.0/]]></tag>
+</tags>
