@@ -1,5 +1,5 @@
 ## Steps to mount S3 file system on local server
-### Install s3fs  either:
+### Installing  s3fs:
 See:  https://github.com/s3fs-fuse/s3fs-fuse
 
 On RHEL/CentOS 7 and newer through EPEL repositories:
@@ -21,13 +21,15 @@ Install from build:
 - sudo vim /etc/passwd-s3fs (then enter aws user_accesskey:awsuser_secretkey) 
 - sudo chmod 640 /etc/passwd-s3fs
 
+## Creating EFS and S3 mounts
+### On EC2 Instances
+#### EFS mnt cmd
+- sudo mount -t nfs -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport  fs-9cfe74d4.efs.us-east-1.amazonaws.com:/ /data
+- sudo mount -t nfs -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport  fs-56fe741e.efs.us-east-1.amazonaws.com:/ /mnt/transformed
+#### S3 mnt cmd
 
-## On EC2 Instances
-#
-## EFS cmd
-sudo mount -t nfs -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport  fs-9cfe74d4.efs.us-east-1.amazonaws.com:/ /data
-sudo mount -t nfs -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport  fs-56fe741e.efs.us-east-1.amazonaws.com:/ /mnt/transformed
-## S3fsi cmd line 
+### On Local server
+#### S3 cmd line 
 sudo s3fs biocore-data  -o passwd_file=/etc/passwd-s3fs -o uid=500 -o gid=1001 -o mp_umask=002 -o allow_other -o use_cache=/tmp  -o multireq_max=20 /data
 sudo s3fs biocore-software  -o passwd_file=/etc/passwd-s3fs -o uid=500 -o gid=1001 -o mp_umask=002 -o allow_other -o use_cache=/tmp  -o multireq_max=20 /opt/software
 
