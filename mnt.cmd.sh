@@ -1,3 +1,26 @@
+## Steps to mount S3 file system on local server
+### Install s3fs  either:
+See:  https://github.com/s3fs-fuse/s3fs-fuse
+
+On RHEL/CentOS 7 and newer through EPEL repositories:
+- sudo yum install epel-release 
+- sudo yum install s3fs-fuse
+
+Or 
+
+Install from build:
+- sudo yum install automake fuse fuse-devel gcc-c++ git libcurl-devel libxml2-devel make openssl-devel 
+- git clone https://github.com/s3fs-fuse/s3fs-fuse.git 
+- cd s3fs-fuse 
+- sudo ./autogen.sh 
+- sudo ./configure --prefix=/usr --with-openssl 
+- sudo make 
+- sudo make install 
+- which s3fs 
+- sudo touch /etc/passwd-s3fs 
+- sudo vim /etc/passwd-s3fs (then enter aws user_accesskey:awsuser_secretkey) 
+- sudo chmod 640 /etc/passwd-s3fs
+
 
 ## On EC2 Instances
 #
